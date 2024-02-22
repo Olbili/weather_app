@@ -11,12 +11,12 @@ import s from './header.module.css';
 const Header = ({setModalIsOpen}) => {
   return (
     <header className={s.header}>
-      <a href="" className="logo"><img src="img/logo.svg" alt="logo" /></a>
+      <a href="#" className="logo"><img src="img/logo.svg" alt="logo" /></a>
       <div className={s.hiddenMenu}>
           <ul className={s.hiddenMenuUl}>
-            <li><a href=''>Who we are</a></li>
-            <li><a href="">Contacts</a></li>
-            <li><a href="">Menu</a></li>
+            <li><a href='#'>Who we are</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">Menu</a></li>
             <li><RxAvatar/></li>
             <li><button>Sign up</button></li>
           </ul>
@@ -28,9 +28,9 @@ const Header = ({setModalIsOpen}) => {
           </MenuButton>
           <Menu className={s.menu} slots={{ listbox: "ul"}}>
             <div className={s.mainInformation}>
-              <MenuItem ><a href=''>Who we are</a></MenuItem>
-              <MenuItem ><a href="">Contacts</a></MenuItem>
-              <MenuItem ><a href="">Menu</a></MenuItem>
+              <MenuItem ><a href='#'>Who we are</a></MenuItem>
+              <MenuItem ><a href="#">Contacts</a></MenuItem>
+              <MenuItem ><a href="#">Menu</a></MenuItem>
             </div>
             <div className={s.profile}>
             <MenuItem ><RxAvatar/></MenuItem>
