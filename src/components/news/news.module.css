@@ -1,0 +1,29 @@
+.newsList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    padding: 20px 70px;
+}
+
+.buttonPagination {
+  width: 138px;
+  margin-top: 10px;
+  padding: 10px 30px;
+  border: none;
+  background-color:  #FFB36C;
+  color: #000000;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+  align-self: flex-start; /* Add this line */
+}
+
+@media screen and (max-width: 768px) {
+    .newsList {
+      display: none;
+    }
+  }
+
+

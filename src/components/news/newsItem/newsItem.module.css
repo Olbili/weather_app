@@ -1,0 +1,51 @@
+.newsItem {
+    margin-right: 30px;
+  }
+
+  .newsImg {
+    width: 300px;
+    height: 210px;
+    border-radius: 10px;
+  }
+  
+  .newsItem:last-child {
+    margin-right: 0;
+  }
+  
+
+  
+  .description {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 19.5px;
+    color: #333;
+    padding-top: 10px;
+    display: inline-block;
+    width: 300px; 
+  }
+
+
+/* .newsItem {
+    margin-right: 30px;
+}
+
+.newsItem:last-of-type {
+    margin-right: 0;
+}
+
+.newsImg {
+    width: 300px;
+    height: 210px;
+    border-radius: 10px;
+}
+
+.description {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 19.5px;
+    color: #333;
+    padding-top: 10px;
+    min-height: 60px;
+    display: inline-block; 
+    width: 300px; 
+} */
