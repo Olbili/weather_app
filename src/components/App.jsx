@@ -6,7 +6,7 @@ import { newsRequest } from "./API/newsRequest";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "./Modal/Modal";
 
-const App = () => {
+export const App = () => {
   const [images, setImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [news, setNews] = useState([]);
