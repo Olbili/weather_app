@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    padding: 10px 16px;
+    height: 50px;
+ 
+    
+}
+
+
+
+.hiddenMenu {
+    visibility: hidden;
+    @media (min-width: 768px) {
+        visibility: visible;
+      };
+    }; 
+
+
+.dropDown{
+    @media (min-width: 768px) {
+        display: none;
+      };
+};
+
+.hiddenMenuUl {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu {
+    display: flex !important;
+    justify-content: space-between;
+    margin: 0 auto;
+    width:100vw;
+    padding: 15px;
+    background-color: rgba(230, 230, 230, 1);
+
+  
+}
+.menuButton {
+    border:none;
+    outline:none;
+    background-color:transparent;
+
+};
+
+
+
+
