@@ -5,6 +5,11 @@ import News from "./news/News";
 import { newsRequest } from "./API/newsRequest";
 import { ToastContainer, toast } from "react-toastify";
 import Modal from "./Modal/Modal";
+import { imagesRequest } from "./API/imagesRequest";
+import SliderImages from "./sliderImages/SliderImages";
+
+const DEFAULT_IMAGE_URL = "./img/default-placeholder.png";
+
 
 export const App = () => {
   const [images, setImages] = useState([]);
@@ -15,7 +20,17 @@ export const App = () => {
   const fetchNews = async (page) => {
     try {
       const fetchedNews = await newsRequest(page);
-      setNews((prevNews) => [...prevNews, ...fetchedNews]);
+      setNews(fetchedNews);
+    } catch (error) {
+      console.log("error", error);
+      toast.error("Not found");
+    }
+  };
+
+  const fetchedImages = async (page) => {
+    try {
+      const fetchedImages = await imagesRequest()
+      setImages(fetchedImages)
     } catch (error) {
       console.log("error", error);
       toast.error("Not found");
@@ -26,6 +41,10 @@ export const App = () => {
     fetchNews(currentPage);
   }, [currentPage]);
 
+  useEffect(() => {
+    fetchedImages()
+  }, []);
+
   const handleSeeMore = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
@@ -34,7 +53,8 @@ export const App = () => {
     <Container>
       <Header setModalIsOpen={setModalIsOpen} />
       <Modal modalIsOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
-      <News news={news} handleSeeMore={handleSeeMore} />
+       <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/>
+      <SliderImages images={images}/>
     </Container>
   );
 };

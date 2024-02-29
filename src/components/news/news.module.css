@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .newsList {
+    .newsList, .buttonPagination {
       display: none;
     }
   }
