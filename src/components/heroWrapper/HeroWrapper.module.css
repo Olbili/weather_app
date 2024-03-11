@@ -1,0 +1,123 @@
+/* section {
+    background-image: url("/src/img/hero-wrapper.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 393px;
+    height: 345px;
+    top: 50px;
+    padding: 15% 2% 20% 2%;
+
+    
+}
+h1{
+    size: 14px;
+    color: aliceblue;
+    text-align: center;
+}
+p{
+ color: aliceblue;
+ font-size: 10px;
+ font-weight: 500;
+ line-height: 12px;
+ letter-spacing: 0em;
+ text-align: left;
+}
+.plus {
+    display: flex;
+}
+form {
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+input {
+    width: 45%;
+    height: 15%;
+    border: 0;
+    border-radius: 20px 0px 0px 20px;
+    margin-right: 2px;
+    
+}
+button {
+    border-radius: 0px 20px 20px 0px;
+    background: #FFB36C;
+    border: none;
+    width: 15px;
+}
+hr {
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg);
+    display: block;
+} */
+.heroWrapper {
+    background-image: url("/src/img/hero-wrapper.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 393px;
+    height: 345px;
+    top: 50px;
+    padding: 15% 2% 20% 2%;
+}
+
+h1 {
+    font-size: 14px; /* 'size' замінено на 'font-size' */
+    color: aliceblue;
+    text-align: center;
+}
+
+.heroWrapper p {
+    margin-left: 50%;
+    color: aliceblue;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 100px;
+    display: block;
+}
+
+.plus {
+    margin-left: 5%;
+    position: relative;
+}
+
+.plus::before {
+    position: absolute;
+    content: "";
+    background-color: rgb(255, 255, 255);
+    top: 20px;
+    left: 30%;
+    width: 1px;
+    height: 40px;
+    z-index: 1;
+}
+
+form {
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+
+.input {
+    width: 45%;
+    height: 15%;
+    border: 0;
+    border-radius: 20px 0px 0px 20px;
+    margin-right: 2px;
+    font-family: Montserrat;
+    font-size: 6px;
+    font-weight: 500;
+    line-height: 7px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: gray;
+
+}
+
+.button {
+    border-radius: 0px 20px 20px 0px;
+    background: #FFB36C;
+    border: none;
+    width: 15px;
+}

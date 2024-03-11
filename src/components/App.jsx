@@ -12,6 +12,11 @@ import { Chart } from "chart.js";
 
 
 
+import fetchData from "./API/Weather";
+import { CardsList } from "./cards/cardsList/CardsList";
+import HeroWrapper from "./heroWrapper/HeroWrapper";
+export const contextInput = createContext(null);
+
 const DEFAULT_IMAGE_URL = "./img/default-placeholder.png";
 
 
@@ -23,6 +28,39 @@ export const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [news, setNews] = useState([]);
 
+
+  useEffect(() => {
+    const storageData = localStorage.getItem("weatherCards");
+    const parsedStorageData = JSON.parse(storageData);
+    if (parsedStorageData) {
+      setWeatherData(
+        parsedStorageData
+      )
+    }
+  }, [])
+
+  useEffect(() => {
+    if (inputValue) {
+      fetchData(inputValue).then(data => setWeatherData([data, ...weatherData]));
+      localStorage.setItem("weatherCards", JSON.stringify(weatherData))
+    }
+  }, [inputValue]);
+
+  const delCard = (cardName) => {
+    setWeatherData(weatherData.filter(card => card.name !== cardName));
+    localStorage.removeItem("weatherCards")
+    // localStorage.removeItem("weatherCards",
+    //   JSON.stringify(weatherData.filter(card => card.name !== cardName)))
+    // localStorage.setItem(
+    //   "weatherCards",
+    //   JSON.stringify(weatherData.filter(card => card.name !== cardName))
+    // );
+  };
+  
+
+  const plusInputValue = (value) => {
+    setInputValue(value);
+  };
 
   const fetchNews = async (page) => {
     try {
