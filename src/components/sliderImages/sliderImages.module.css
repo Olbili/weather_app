@@ -1,0 +1,12 @@
+button.slick-arrow.slick-next::before {
+    background-color: black;
+  }
+
+
+
+@media screen and (max-width: 768px) {
+    .sliderContainer{
+        display: none;
+    }
+  } 
+
