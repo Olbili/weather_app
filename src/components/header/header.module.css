@@ -5,47 +5,141 @@
     align-items: center;
     padding: 10px 16px;
     height: 50px;
- 
-    
+    position: relative;
 }
 
 
 
-.hiddenMenu {
+/* .hiddenMenu {
     visibility: hidden;
     @media (min-width: 768px) {
         visibility: visible;
+        display: flex;
+        justify-content: space-between;
       };
-    }; 
+    } */
+
+@media screen and (min-width: 768px) {
+    .dropDown { display: none;}
+  }
 
 
-.dropDown{
-    @media (min-width: 768px) {
-        display: none;
-      };
-};
 
 .hiddenMenuUl {
+    visibility: hidden;
+    @media (min-width: 768px) {
+        visibility: visible;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 50px;
+        position: absolute;
+        /* left: 50px; */
+        left: 5%;
+      };
+    }
+   
+   
+
+
+.hiddenMenuUltwo {
+    visibility: hidden;
+    @media (min-width: 768px) {
+        visibility: visible;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+      };
+   
+   
+   
+}
+
+.hiddenMenuUl a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* .christians {
+   display: flex;
+
+}
+
+
+.satana {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    float: right;
+} */
+
+.hiddenButton {
+    background-color: #FFB36C;
+    color: black;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 0 auto;
 }
 
 .menu {
-    display: flex !important;
-    justify-content: space-between;
+    
     margin: 0 auto;
     width:100vw;
     padding: 15px;
     background-color: rgba(230, 230, 230, 1);
-
-  
 }
+
+
+.menuFlex {
+    display: flex;
+    justify-content: space-evenly;
+   
+}
+
+
+ul {
+    list-style: none;
+    line-height: 40px;
+}
+
+ul a {
+    text-decoration: none;
+    color: black;
+}
+
 .menuButton {
     border:none;
     outline:none;
     background-color:transparent;
 
-};
+}
+
+
+/* .mainInformation {
+    
+} */
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonMenu {
+    background-color: #FFB36C;
+    color: black;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    margin: 0 auto;
+}
 
 
 
