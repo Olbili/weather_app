@@ -1,5 +1,3 @@
-import { toast } from 'react-toastify';
-import fetchData from './API/weatherRequest';
 import weekWeatherAPI from './API/weekWeather';
 import { useEffect, useRef, useState } from 'react';
 import Container from './Container/Container';
