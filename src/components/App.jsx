@@ -11,12 +11,14 @@ import SliderImages from "./sliderImages/SliderImages";
 import fetchData from "./API/Weather";
 import { CardsList } from "./cards/cardsList/CardsList";
 import HeroWrapper from "./heroWrapper/HeroWrapper";
+import { FiveDays } from "./fiveDays/FiveDays";
 export const contextInput = createContext(null);
 
 const DEFAULT_IMAGE_URL = "./img/default-placeholder.png";
 
 
 export const App = () => {
+  const [fiveFetchData, setFiveFetchData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [weatherData, setWeatherData] = useState([]);
   const [images, setImages] = useState([]);
@@ -41,6 +43,8 @@ export const App = () => {
     }
   }, [inputValue]);
 
+
+
   const delCard = (cardName) => {
     setWeatherData(weatherData.filter(card => card.name !== cardName));
     localStorage.removeItem("weatherCards")
@@ -55,6 +59,10 @@ export const App = () => {
 
   const plusInputValue = (value) => {
     setInputValue(value);
+  };
+
+  const plusFiveFetchData = (value) => {
+    setFiveFetchData(value);
   };
 
   const fetchNews = async (page) => {
@@ -97,8 +105,9 @@ export const App = () => {
         <HeroWrapper />
       </contextInput.Provider>
       {weatherData.length === 0 ? null : 
-    <CardsList data={weatherData}  delCard={delCard}/>
+    <CardsList data={weatherData}  delCard={delCard} plusFiveFetchData={plusFiveFetchData}/>
 }
+      <FiveDays fiveFetchData={fiveFetchData}/>
        <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/>
       <SliderImages images={images}/>
     </Container>
