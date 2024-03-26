@@ -1,11 +1,17 @@
-button.slick-arrow.slick-next::before {
-    background-color: black;
-  }
+.mySwiper {
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
 
-
+.sliderTitle {
+    margin-left: -60px;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 24px;
+    font-size: 18px;
+}
 
 @media screen and (max-width: 768px) {
-    .sliderContainer{
+    .mySwiper, .sliderTitle{
         display: none;
     }
   } 

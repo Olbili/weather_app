@@ -5,6 +5,7 @@
     cursor: grab;
   }
   
+  
   .swiper-slide {
     background-position: center;
     background-size: cover;
@@ -17,4 +18,10 @@
     width: 400px;
     height: 250px;
   }
+
+  @media screen and (max-width: 768px) {
+    .sliderContainer{
+        display: none;
+    }
+  } 
   
