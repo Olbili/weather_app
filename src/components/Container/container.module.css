@@ -1,3 +1,5 @@
+
+
 .container {
   width: 360px;
   margin: 0 auto;
@@ -5,7 +7,7 @@
 
   @media (min-width: 768px) {
     width: 650px;
-  };
+  }
 
   @media (min-width: 1024px) {
     width: 1200px;

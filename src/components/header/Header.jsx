@@ -6,7 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 import s from './header.module.css';
 import logo from 'img/logo.svg';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 
 const Header = ({setModalIsOpen, username, onLogout, isUserLoggedIn}) => {

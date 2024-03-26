@@ -1,8 +1,8 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Container from "./Container/Container";
 import Header from "./header/Header";
 import Modal from './Modal/Modal';
-import { request } from "./API/imagesRequest";
+// import { request } from "./API/imagesRequest";
 import News from "./news/News";
 import { newsRequest } from "./API/newsRequest";
 import { ToastContainer, toast } from "react-toastify";
@@ -146,6 +146,7 @@ export const App = () => {
 
   
   return (
+    <>
     <Container>
       <div>
         {/* <button onClick={notify}>Notify!</button> */}
@@ -158,11 +159,13 @@ export const App = () => {
       {weatherData.length === 0 ? null : 
     <CardsList data={weatherData}  delCard={delCard} setIsChartedVisible={setIsChartedVisible} isChartedVisible={isChartedVisible}/>
 }
-      <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/>
-      <SliderImages images={images}/>
+      {/* <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/> */}
+      {/* <SliderImages images={images}/> */}
       {isChartedVisible === true && ( <Charted />)}
-      <Footer />
+      
       <ToastContainer />
     </Container>
+    <Footer />
+    </>
   );
 };
