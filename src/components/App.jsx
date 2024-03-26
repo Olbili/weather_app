@@ -1,34 +1,28 @@
-import { createContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import Container from './Container/Container';
 import Header from './header/Header';
 import Modal from './Modal/Modal';
-import { request } from './API/imagesRequest';
 import News from './news/News';
 import { newsRequest } from './API/newsRequest';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { imagesRequest } from './API/imagesRequest';
 import SliderImages from './sliderImages/SliderImages';
-
-// import data from 'data/chart.json';
-
 import fetchData from './API/Weather';
 import { CardsList } from './cards/cardsList/CardsList';
 import HeroWrapper from './heroWrapper/HeroWrapper';
-// import { Charted } from './Chart/Charted';
+
 export const contextInput = createContext(null);
 
 const DEFAULT_IMAGE_URL = './img/default-placeholder.png';
 
 export const App = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [username, setUsername] = useState('Menu');
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+  const [weatherData, setWeatherData] = useState([]);
   const [images, setImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [news, setNews] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-  const [weatherData, setWeatherData] = useState([]);
+  const [isChartedVisible, setIsChartedVisible] = useState(false);
 
   useEffect(() => {
     const storageData = localStorage.getItem('weatherCards');
@@ -39,37 +33,28 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    // if (inputValue) {
-    //   fetchData(inputValue).then(data => setWeatherData([data, ...weatherData]));
-    //   localStorage.setItem("weatherCards", JSON.stringify(weatherData))
-    // }
-
     if (inputValue) {
       fetchData(inputValue)
         .then(data => {
           setWeatherData(prevData => {
             const newData = [data, ...prevData];
-            console.log(newData);
             localStorage.setItem('weatherCards', JSON.stringify(newData));
             return newData;
           });
         })
-        .catch(error => toast('Uncorrect sity'));
+        .catch(error => toast('Incorrect city'));
     }
   }, [inputValue]);
 
-  // const notify = () => toast("Wow so easy!");
   const delCard = cardName => {
-    setWeatherData(weatherData.filter(card => card.name !== cardName));
-    JSON.stringify(weatherData.filter(card => card.name !== cardName));
+    setWeatherData(prevData =>
+      prevData.filter(card => card.name !== cardName)
+    );
     localStorage.setItem(
       'weatherCards',
       JSON.stringify(weatherData.filter(card => card.name !== cardName))
     );
-    // localStorage.getItem("weatherCards");
-    // const parsedStorageData = JSON.parse(storageData);
-    // localStorage.removeItem("weatherCards")
-    // localStorage.setItem("weatherCards", JSON.stringify(weatherData))
+    setIsChartedVisible(false);
   };
 
   const plusInputValue = value => {
@@ -116,56 +101,48 @@ export const App = () => {
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.removeItem('password');
-    setUsername('Menu');
-
-    signUp();
+    // setUsername('Menu'); // Uncomment if setUsername is defined
+    // signUp(); // Uncomment if signUp is defined
   };
 
   const signUp = () => {
-    setIsUserLoggedIn(prev => !prev);
+    // setIsUserLoggedIn(prev => !prev); // Uncomment if setIsUserLoggedIn is defined
   };
 
   useEffect(() => {
-    if (localStorage.getItem('name')) {
-      setIsUserLoggedIn(true);
-      setUsername(localStorage.getItem('name'));
-    }
+    // if (localStorage.getItem('name')) {
+    //   setIsUserLoggedIn(true); // Uncomment if setIsUserLoggedIn is defined
+    //   setUsername(localStorage.getItem('name')); // Uncomment if setUsername is defined
+    // }
   }, []);
 
   return (
     <Container>
-      <div>{/* <button onClick={notify}>Notify!</button> */}</div>
-      <Header
-        setModalIsOpen={setModalIsOpen}
-        username={username}
-        onLogout={handleLogout}
-        isUserLoggedIn={isUserLoggedIn}
-        signUp={signUp}
-      />
-      <Modal
-        modalIsOpen={modalIsOpen}
-        setUsername={setUsername}
-        handleLogout={handleLogout}
-        signUp={signUp}
-        onClose={() => setModalIsOpen(false)}
-      />
+      <div>
+        {/* <button onClick={notify}>Notify!</button> */}
+      </div>
+      <Header  setModalIsOpen={setModalIsOpen} username={username} onLogout={handleLogout} isUserLoggedIn={isUserLoggedIn} signUp={signUp}/>
+      <Modal modalIsOpen={modalIsOpen} setUsername={setUsername}handleLogout={handleLogout} signUp={signUp} onClose={() => setModalIsOpen(false) }/>
       <contextInput.Provider value={{ plusInputValue }}>
         <HeroWrapper />
       </contextInput.Provider>
-      {weatherData.length === 0 ? null : (
-        <CardsList data={weatherData} delCard={delCard} />
-      )}
-      {inputValue ? (
+      {weatherData.length === 0 ? null : 
+    <CardsList data={weatherData}  delCard={delCard}/>
+}
+{inputValue ? (
         <News
           news={news}
           handleSeeMore={handleSeeMore}
           defaultImg={DEFAULT_IMAGE_URL}
         />
       ) : null}
+      <SliderImages images={images}/>
+      {isChartedVisible === true && ( <Charted />)}
+      <Footer />
 
-      <SliderImages images={images} />
-      {/* <Charted /> */}
       <ToastContainer />
     </Container>
   );
 };
+
+

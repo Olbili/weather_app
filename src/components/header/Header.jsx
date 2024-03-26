@@ -29,7 +29,7 @@ const Header = ({setModalIsOpen, username, onLogout, isUserLoggedIn}) => {
                   <li> <button className={s.hiddenButton} onClick={onLogout}>Log Out </button></li>
                 )}
               {/* <li><button className={s.hiddenButton}>Sign up</button></li> */}
-              <li><RxAvatar className={s.avatar}/></li>
+              <li><RxAvatar size={25} className={s.avatar}/></li>
           </ul>
       <div className={s.dropDown}>
         <Dropdown>

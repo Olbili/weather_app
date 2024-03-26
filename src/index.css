@@ -26,3 +26,6 @@ code {
     margin-top: 10px;
   }
 
+  .chartjs-axis-x {
+    top: 0;
+    }

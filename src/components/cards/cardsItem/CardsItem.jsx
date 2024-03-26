@@ -12,15 +12,28 @@ import speeds from "../../../img/speed.svg";
 
 import React, { useState } from 'react';
 import s from './CardsItem.module.css'
-import fetchData from "components/API/Weather";
+import fetchData, { fiveFetchData } from "components/API/Weather";
 
 
 export const CardsItem = ({ id, name, main, speed, country, visibility, delCard, isLiked=false }) => { 
 const [likedState, setlikedState] = useState(isLiked)
 const [weatherDetails, setWeatherDetails] = useState(false)
 
+
+
 const like = () => {
   setlikedState(!likedState)
+}
+
+const weatherData = async (name) => {
+  try {
+    const data = await fiveFetchData(name)
+    console.log(data)
+    plusFiveFetchData(data.list)
+  } catch (error) {
+   console.log("error") 
+  }
+  
 }
 
 const toggleDetails = () => {
