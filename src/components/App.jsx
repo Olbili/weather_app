@@ -47,9 +47,7 @@ export const App = () => {
   }, [inputValue]);
 
   const delCard = cardName => {
-    setWeatherData(prevData =>
-      prevData.filter(card => card.name !== cardName)
-    );
+    setWeatherData(prevData => prevData.filter(card => card.name !== cardName));
     localStorage.setItem(
       'weatherCards',
       JSON.stringify(weatherData.filter(card => card.name !== cardName))
@@ -118,31 +116,33 @@ export const App = () => {
 
   return (
     <Container>
-      <div>
-        {/* <button onClick={notify}>Notify!</button> */}
-      </div>
-      <Header  setModalIsOpen={setModalIsOpen} username={username} onLogout={handleLogout} isUserLoggedIn={isUserLoggedIn} signUp={signUp}/>
-      <Modal modalIsOpen={modalIsOpen} setUsername={setUsername}handleLogout={handleLogout} signUp={signUp} onClose={() => setModalIsOpen(false) }/>
+      <div>{/* <button onClick={notify}>Notify!</button> */}</div>
+      {/* <Header  setModalIsOpen={setModalIsOpen} username={username} onLogout={handleLogout} isUserLoggedIn={isUserLoggedIn} signUp={signUp}/> */}
+      {/* <Modal
+        modalIsOpen={modalIsOpen}
+        setUsername={setUsername}
+        handleLogout={handleLogout}
+        signUp={signUp}
+        onClose={() => setModalIsOpen(false)}
+      /> */}
       <contextInput.Provider value={{ plusInputValue }}>
         <HeroWrapper />
       </contextInput.Provider>
-      {weatherData.length === 0 ? null : 
-    <CardsList data={weatherData}  delCard={delCard}/>
-}
-{inputValue ? (
+      {weatherData.length === 0 ? null : (
+        <CardsList data={weatherData} delCard={delCard} />
+      )}
+      {inputValue ? (
         <News
           news={news}
           handleSeeMore={handleSeeMore}
           defaultImg={DEFAULT_IMAGE_URL}
         />
       ) : null}
-      <SliderImages images={images}/>
-      {isChartedVisible === true && ( <Charted />)}
-      <Footer />
+      <SliderImages images={images} />
+      {/* {isChartedVisible === true && <Charted />} */}
+      {/* <Footer /> */}
 
       <ToastContainer />
     </Container>
   );
 };
-
-

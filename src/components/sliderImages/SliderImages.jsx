@@ -20,7 +20,7 @@ import {
 
 const SliderImages = ({ images }) => {
   return (
-    <>
+    <section className={s.slider}>
       <p className={s.sliderTitle}>Beautiful views</p>
       <Swiper
         effect={'coverflow'}
@@ -72,7 +72,7 @@ const SliderImages = ({ images }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </section>
   );
 };
 
