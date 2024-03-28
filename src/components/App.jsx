@@ -12,6 +12,10 @@ import SliderImages from './sliderImages/SliderImages';
 import fetchData from './API/Weather';
 import { CardsList } from './cards/cardsList/CardsList';
 import HeroWrapper from './heroWrapper/HeroWrapper';
+import Footer from "./footer/Footer";
+import { Charted } from "./Chart/Charted";
+import { FiveDays } from "./fiveDays/FiveDays";
+
 
 export const contextInput = createContext(null);
 
@@ -24,6 +28,14 @@ export const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [news, setNews] = useState([]);
   const [isChartedVisible, setIsChartedVisible] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [username, setUsername] = useState('Menu');
+  const [fiveFetchData, setFiveFetchData] = useState([]);
+
+ 
+
+
 
   useEffect(() => {
     const storageData = localStorage.getItem('weatherCards');
@@ -58,6 +70,10 @@ export const App = () => {
 
   const plusInputValue = value => {
     setInputValue(value);
+  };
+
+  const plusFiveFetchData = (value) => {
+    setFiveFetchData(value);
   };
 
   const fetchNews = async page => {
@@ -100,43 +116,43 @@ export const App = () => {
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.removeItem('password');
-    // setUsername('Menu'); // Uncomment if setUsername is defined
-    // signUp(); // Uncomment if signUp is defined
+    setUsername('Menu');
+    signUp(); 
   };
 
   const signUp = () => {
-    // setIsUserLoggedIn(prev => !prev); // Uncomment if setIsUserLoggedIn is defined
+    setIsUserLoggedIn(prev => !prev); 
   };
 
   useEffect(() => {
-    // if (localStorage.getItem('name')) {
-    //   setIsUserLoggedIn(true); // Uncomment if setIsUserLoggedIn is defined
-    //   setUsername(localStorage.getItem('name')); // Uncomment if setUsername is defined
-    // }
+    if (localStorage.getItem('name')) {
+      setIsUserLoggedIn(true); 
+      setUsername(localStorage.getItem('name')); 
+    }
   }, []);
 
   return (
     <>
     <Container>
-      <div>{/* <button onClick={notify}>Notify!</button> */}</div>
-      {/* <Header  setModalIsOpen={setModalIsOpen} username={username} onLogout={handleLogout} isUserLoggedIn={isUserLoggedIn} signUp={signUp}/> */}
-      {/* <Modal
+      {/* <div>{ <button onClick={notify}>Notify!</button> }</div> */}
+      { <Header  setModalIsOpen={setModalIsOpen} username={username} onLogout={handleLogout} isUserLoggedIn={isUserLoggedIn} signUp={signUp}/> }
+      { <Modal
         modalIsOpen={modalIsOpen}
         setUsername={setUsername}
         handleLogout={handleLogout}
         signUp={signUp}
         onClose={() => setModalIsOpen(false)}
-      /> */}
+      /> }
       <contextInput.Provider value={{ plusInputValue }}>
         <HeroWrapper />
       </contextInput.Provider>
       {weatherData.length === 0 ? null : 
-    <CardsList data={weatherData}  delCard={delCard} setIsChartedVisible={setIsChartedVisible} isChartedVisible={isChartedVisible}/>
-}
+    <CardsList data={weatherData}  delCard={delCard} setIsChartedVisible={setIsChartedVisible} isChartedVisible={isChartedVisible}  plusFiveFetchData={plusFiveFetchData}/>
+      }
+    <FiveDays fiveFetchData={fiveFetchData}/>
       <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/>
       <SliderImages images={images}/>
       {isChartedVisible === true && ( <Charted />)}
-      <Footer />
       <ToastContainer />
     </Container>
     <Footer />

@@ -15,7 +15,7 @@ import s from './CardsItem.module.css'
 import fetchData, { fiveFetchData } from "components/API/Weather";
 
 
-export const CardsItem = ({ id, name, main, speed, country, visibility, delCard, isLiked=false }) => { 
+export const CardsItem = ({ id, name, main, speed, country, visibility, delCard, isLiked=false, isChartedVisible, setIsChartedVisible, plusFiveFetchData }) => { 
 const [likedState, setlikedState] = useState(isLiked)
 const [weatherDetails, setWeatherDetails] = useState(false)
 
@@ -52,8 +52,10 @@ const celsiusLike = Math.round(main.feels_like - 273.15);
         <p className={s.text}>{country}</p>
       </div>
       <div className={s.forecastButton}>
-        <button className={s.forecastButtonHourly}>Hourly forecast</button>
-        <button className={s.forecastButtonWeekly}>Weekly forecast</button>
+        <button className={s.forecastButtonHourly} onClick={(e) => {
+          e.preventDefault()
+          setIsChartedVisible(!isChartedVisible)}}>Hourly forecast</button>
+        <button className={s.forecastButtonWeekly} onClick={() => weatherData(name)}>Weekly forecast</button>
       </div>
       <div className={s.now}>
         <p className={s.date}>{new Date().toLocaleDateString()}</p>
