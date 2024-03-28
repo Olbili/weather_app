@@ -142,6 +142,15 @@ ul a {
     margin: 0 auto;
 }
 
-
+.logout {
+    background-color: #FFB36C;
+    color: black;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 0 auto;
+}
 
 

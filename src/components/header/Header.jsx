@@ -50,7 +50,7 @@ const Header = ({setModalIsOpen, username, onLogout, isUserLoggedIn}) => {
                 <MenuItem ><button className={s.buttonMenu}onClick={() => setModalIsOpen(true)}>Sign up</button></MenuItem>
               )}
               {isUserLoggedIn && (
-                <MenuItem> <button onClick={onLogout}>Log Out </button></MenuItem>
+                <MenuItem> <button className={s.logout}onClick={onLogout}>Log Out </button></MenuItem>
               )}
             </div>
             </div>
