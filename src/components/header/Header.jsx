@@ -5,7 +5,8 @@ import { MenuItem } from '@mui/base/MenuItem'
 import { IoIosArrowDown } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 import s from './header.module.css';
-import logo from 'img/logo.svg';
+import logo from 'img/logoo.svg';
+import user from 'img/user.svg'
 // import { useEffect, useState } from 'react';
 
 
@@ -13,7 +14,7 @@ const Header = ({setModalIsOpen, username, onLogout, isUserLoggedIn}) => {
 
   return (
     <header className={s.header}>
-      <a href="#" className="logo"><img src={logo} alt="logo" /></a>
+      <a href="#" className="logo"><img className={s.logo} src={logo} alt="logo" /></a>
       {/* <div className={s.hiddenMenu}> */}
           <ul className={s.hiddenMenuUl}>
               <li><a href='#'>Who we are</a></li>
@@ -29,7 +30,7 @@ const Header = ({setModalIsOpen, username, onLogout, isUserLoggedIn}) => {
                   <li> <button className={s.hiddenButton} onClick={onLogout}>Log Out </button></li>
                 )}
               {/* <li><button className={s.hiddenButton}>Sign up</button></li> */}
-              <li><RxAvatar size={25} className={s.avatar}/></li>
+              <li><img src={user} className={s.avatar} /></li>
           </ul>
       <div className={s.dropDown}>
         <Dropdown>
