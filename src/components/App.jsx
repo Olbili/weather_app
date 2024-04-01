@@ -1,8 +1,11 @@
-import { createContext, useEffect, useRef, useState } from "react";
+
+
+
+import { createContext, useEffect, useState } from "react";
 import Container from "./Container/Container";
 import Header from "./header/Header";
 import Modal from './Modal/Modal';
-import { request } from "./API/imagesRequest";
+// import { request } from "./API/imagesRequest";
 import News from "./news/News";
 import { newsRequest } from "./API/newsRequest";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,6 +20,9 @@ import SliderImages from "./sliderImages/SliderImages";
 import fetchData from "./API/Weather";
 import { CardsList } from "./cards/cardsList/CardsList";
 import HeroWrapper from "./heroWrapper/HeroWrapper";
+import { Charted } from "./Chart/Charted";
+import Footer from "./footer/Footer";
+import { FiveDays } from "./fiveDays/FiveDays";
 export const contextInput = createContext(null);
 
 
@@ -24,14 +30,17 @@ const DEFAULT_IMAGE_URL = "./img/default-placeholder.png";
 
 
 export const App = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [weatherData, setWeatherData] = useState([]);
+  const [fiveFetchData, setFiveFetchData] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [username, setUsername] = useState('Menu');
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [images, setImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [news, setNews] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [weatherData, setWeatherData] = useState([]);
-  const [isChartedVisible, setIsChartedVisible] = useState(false)
+  const [isChartedVisible, setIsChartedVisible] = useState(false);
+  // const [isFiveDaysVisible, setIsFiveDaysVisible] = useState(false);
 
 
   useEffect(() => {
@@ -64,8 +73,6 @@ export const App = () => {
   }, [inputValue]);
 
 
-
-
   // const notify = () => toast("Wow so easy!");
   const delCard = (cardName) => {
     setWeatherData(weatherData.filter(card => card.name !== cardName));
@@ -86,10 +93,6 @@ export const App = () => {
 
   const plusInputValue = (value) => {
     setInputValue(value);
-  };
-
-  const plusFiveFetchData = (value) => {
-    setFiveFetchData(value);
   };
 
   const fetchNews = async (page) => {
@@ -135,6 +138,10 @@ export const App = () => {
     signUp();
   };
 
+  const plusFiveFetchData = (value) => {
+    setFiveFetchData(value);
+  };
+
   const signUp = () => {
     setIsUserLoggedIn ((prev) => !prev)
   };
@@ -146,25 +153,32 @@ export const App = () => {
     }
   }, []);
 
-  
+
   return (
+    <>
     <Container>
-      <div>
-        {/* <button onClick={notify}>Notify!</button> */}
-      </div>
       <Header  setModalIsOpen={setModalIsOpen} username={username} onLogout={handleLogout} isUserLoggedIn={isUserLoggedIn} signUp={signUp}/>
       <Modal modalIsOpen={modalIsOpen} setUsername={setUsername}handleLogout={handleLogout} signUp={signUp} onClose={() => setModalIsOpen(false) }/>
+    {/* </Container> */}
       <contextInput.Provider value={{ plusInputValue }}>
         <HeroWrapper />
       </contextInput.Provider>
-      {weatherData.length === 0 ? null : 
-    <CardsList data={weatherData}  delCard={delCard}/>
-}
-       <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/>
-      <SliderImages images={images}/>
+     {/* <Container> */}
+       {weatherData.length === 0 ? null : 
+    <CardsList data={weatherData}  delCard={delCard} setIsChartedVisible={setIsChartedVisible} isChartedVisible={isChartedVisible} plusFiveFetchData={plusFiveFetchData} />
+    // isFiveDaysVisible={isFiveDaysVisible} setIsFiveDaysVisible={setIsFiveDaysVisible}
+} 
+      <FiveDays fiveFetchData={fiveFetchData}/>
+    
+    {/* {isFiveDaysVisible === true && (<FiveDays fiveFetchData={fiveFetchData}/>)} */}
+      {/* <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/> */}
+      {/* <SliderImages images={images}/> */}
       {isChartedVisible === true && ( <Charted />)}
-      <Footer />
+      
       <ToastContainer />
     </Container>
+    <Footer />
+    </>
   );
 };
+

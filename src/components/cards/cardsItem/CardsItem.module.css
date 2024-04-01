@@ -1,16 +1,12 @@
-/* .card {
-    border-radius: 15px;
-    background: #E8E8E8;
+.section {
+  width: 293px;
+  margin: 35px auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.cardHeader {
-    
-}
-
-
-.text{
-    color: black;
-}; */
 .card p {
     /* text-decoration: #000; */
     color: #000;
@@ -22,35 +18,48 @@
   align-items: center;
 }
 
-/* .forecastButtonHourly{ 
+.forecastButtonHourly{ 
+  margin-left: 26px;
   border: none;
-  border-radius: 25px;
-  width: 25%;
-  height: 15%;
+  border-radius: 15px;
+  padding: 8px, 18px, 8px, 18px;
   background: #FFB36C;
   font-size: 300;
   font-weight: 10px;
-} */
+  white-space: nowrap;
+}
 
 .forecastButtonWeekly {
+  margin-right: 26px;
   border: none;
-  border-radius: 25px;
-  width: 25%;
-  height: 15%;
+  border-radius: 15px;
+  padding: 8px, 18px, 8px, 18px;
   background: #FFB36C;
   font-size: 300;
   font-weight: 10px;
+  white-space: nowrap;
 }
 
 .card {
     display: flex;
     flex-direction: column;
-    width: 320px;
-    height: 430px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    margin: 0 auto;
+    width: 292px;
+    height: 392px;
+    background-color: #E8E8E8;
+    border-radius: 10px;
+    margin-bottom: 35px;
+
+    @media (min-width: 768px) {
+      width: 262px;
+      height: 352px;
+      margin: 50px 55px;
+    };
+    @media (min-width: 1024px) {
+      width: 320px;
+      height: 430px;
+      margin: 80px 45px;
+    };
   }
   
   .cardHeader {
@@ -58,7 +67,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
   }
   
   .cardHeader p {
@@ -138,21 +146,35 @@
     color: #007bff;
   }
 
-  .details {
+
+
+ul {
+  padding: 0px;
+}
+
+
+
+
+.details {
     background: #E8E8E8;
     border-radius: 15px;
-    padding-top: 30px;
-    width: 293px;
-    height: 1205px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  .details li {
+.details li {
+  margin: 0 auto;
     list-style: none;
-    width: 207px;
+    width: 115px;
     height: 160px;
     background: #D9D9D9;
     border-radius: 20px;
     text-align: center;
-    margin: 20px;
+    margin: 5px;
   }
-  
+
+.min_max p {
+  display: block;
+  padding: 5px 0px;
+}

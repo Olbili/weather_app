@@ -50,17 +50,28 @@ hr {
     display: block;
 } */
 .heroWrapper {
-    background-image: url("/src/img/hero-wrapper.png");
+    background-image: url("/src/img/mobile.png");
+    height: 345px;
+    
+    @media (min-width: 768px) {
+        background-image: url("/src/img/768.png");
+    };
+    @media (min-width: 1024px) {
+        background-image: url("/src/img/hero-wrapper.png");
+        height: 595px;
+    };
+    
     background-repeat: no-repeat;
     background-size: cover;
-    width: 393px;
-    height: 345px;
-    top: 50px;
-    padding: 15% 2% 20% 2%;
+}
+
+.h1 {
+    padding-top: 50px;
+    margin-bottom: 35px;
 }
 
 h1 {
-    font-size: 14px; /* 'size' замінено на 'font-size' */
+    font-size: 14px;
     color: aliceblue;
     text-align: center;
 }
@@ -78,46 +89,119 @@ h1 {
 }
 
 .plus {
-    margin-left: 5%;
+    /* margin-left: 5%; */
     position: relative;
+    
 }
 
 .plus::before {
     position: absolute;
     content: "";
     background-color: rgb(255, 255, 255);
-    top: 20px;
-    left: 30%;
+    top: 15%;
+    left: 40%;
     width: 1px;
-    height: 40px;
-    z-index: 1;
+    height: 100px;
+    z-index: 100;
+}
+
+@media (min-width: 768px) {
+        .plus{
+        display: flex; 
+        justify-content: space-evenly;        
+    }
+};
+
+@media (min-width: 768px) {
+    .plus::before{
+    left: 50%;
+    height: 110px;
+    }
+};
+@media (min-width: 1024px) {
+    .plus::before{
+        height: 144px;
+        }
+};
+
+.first {
+    margin-right: 72px;
+}
+
+@media (min-width: 768px) {
+    .first {
+        text-align: end;
+    }
+};
+
+.second {
+    /* margin-left: 52px; */
+    text-align: start;
 }
 
 form {
     justify-content: center;
     display: flex;
     margin-top: 30px;
+    height: 15px;
+    padding-top: 45px;
+    @media (min-width: 768px) {
+        height: 27px;
+    };
+    @media (min-width: 1024px) {
+        height: 42px;
+    };
 }
 
 .input {
     width: 45%;
-    height: 15%;
+    /* height: 15px; */
     border: 0;
-    border-radius: 20px 0px 0px 20px;
+    border-radius: 10px 0px 0px 10px;
     margin-right: 2px;
     font-family: Montserrat;
-    font-size: 6px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 700;
     line-height: 7px;
     letter-spacing: 0em;
     text-align: left;
     color: gray;
 
+    /* @media (min-width: 768px) {
+        height: 27px;
+    };
+    @media (min-width: 1024px) {
+        height: 42px;
+    }; */
 }
 
 .button {
-    border-radius: 0px 20px 20px 0px;
+    border-radius: 0px 10px 10px 0px;
     background: #FFB36C;
     border: none;
-    width: 15px;
+    width: 16px;
+    /* height: 15px; */
+
+    @media (min-width: 768px) {
+        /* height: 27px; */
+        width: 29px;
+    };
+    @media (min-width: 1024px) {
+        /* height: 42px; */
+        width: 45px;
+    };
+}
+
+.svg {
+    width: 12px;
+    height: 12px;
+
+    @media (min-width: 768px) {
+        height: 16px;
+        width: 16px;
+    };
+    @media (min-width: 1024px) {
+        height: 25px;
+        width: 25px;
+    };
 }

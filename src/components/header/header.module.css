@@ -39,9 +39,6 @@
         left: 5%;
       };
     }
-   
-   
-
 
 .hiddenMenuUltwo {
     visibility: hidden;
@@ -102,13 +99,12 @@
    
 }
 
-
-ul {
+.hiddenMenuUl .hiddenMenuUltwo  {
     list-style: none;
     line-height: 40px;
 }
 
-ul a {
+.hiddenMenuUl .hiddenMenuUltwo  a {
     text-decoration: none;
     color: black;
 }
