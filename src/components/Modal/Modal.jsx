@@ -39,8 +39,8 @@ const Modal = ({modalIsOpen, onClose, setUsername, handleLogout, signUp}) => {
             </button>
                 {localStorage.getItem('name') ? (
                     <div>
-                    <h1>You are already logged in</h1>
-                    <button onClick={handleLogout}>Log Out</button>
+                    <h1 className={s.h1}>You are already logged in</h1>
+                    <button className={s.logout}onClick={handleLogout}>Log Out</button>
                   </div>
                 ) : (
                   <h1 className={s.sign}>Sign Up</h1>

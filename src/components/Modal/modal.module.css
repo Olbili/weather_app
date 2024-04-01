@@ -36,8 +36,24 @@
     /* background-color: transparent; */
   }
   
+  .h1 {
+    color: black;
+  }
 
-  
+  .logout {
+    background-color: #FFB36C;
+    color: black;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .sign {
+    color: black;
+  }
   .form {
     display: flex;
     flex-direction: column;
