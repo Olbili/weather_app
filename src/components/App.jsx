@@ -16,7 +16,9 @@ import SliderImages from "./sliderImages/SliderImages";
 
 // import data from 'data/chart.json';
 
-
+import { Charted } from "./Chart/Charted";
+import Footer from "./footer/Footer";
+import { FiveDays } from "./fiveDays/FiveDays";
 import fetchData from "./API/Weather";
 import { CardsList } from "./cards/cardsList/CardsList";
 import HeroWrapper from "./heroWrapper/HeroWrapper";
@@ -25,8 +27,10 @@ export const contextInput = createContext(null);
 const DEFAULT_IMAGE_URL = './img/default-placeholder.png';
 
 export const App = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [weatherData, setWeatherData] = useState([]);
+  const [fiveFetchData, setFiveFetchData] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [username, setUsername] = useState('Menu');
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [images, setImages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [news, setNews] = useState([]);
@@ -147,12 +151,12 @@ export const App = () => {
         <HeroWrapper />
       </contextInput.Provider>
       {weatherData.length === 0 ? null : 
-    <CardsList data={weatherData}  delCard={delCard}/>
+    <CardsList data={weatherData}  delCard={delCard} setIsChartedVisible={setIsChartedVisible} isChartedVisible={isChartedVisible} plusFiveFetchData={plusFiveFetchData} fiveFetchData={fiveFetchData}/>
 }
-       <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/>
+      <FiveDays fiveFetchData={fiveFetchData}/>
+      <News news={news} handleSeeMore={handleSeeMore} defaultImg={DEFAULT_IMAGE_URL}/>
       <SliderImages images={images}/>
       {isChartedVisible === true && ( <Charted />)}
-      <Footer />
       <ToastContainer />
     </Container>
     <Footer />

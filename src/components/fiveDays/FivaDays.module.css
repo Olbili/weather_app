@@ -65,7 +65,7 @@
 @media (min-width: 1024px) {
     .u {
         width: 1140px;
-        padding: 50px 0px;
+        /* padding: 50px 0px; */
     }
     .li {
         margin: 10px auto;

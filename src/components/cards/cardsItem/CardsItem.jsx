@@ -18,7 +18,7 @@ import s from './CardsItem.module.css'
 import fetchData, { fiveFetchData } from "components/API/Weather";
 
 
-export const CardsItem = ({ id, name, main, speed, country, visibility, delCard, isLiked=false }) => { 
+export const CardsItem = ({ id, name, main, speed, country, visibility, delCard, isLiked=false, plusFiveFetchData}) => { 
 const [likedState, setlikedState] = useState(isLiked)
 const [weatherDetails, setWeatherDetails] = useState(false)
 // setIsFiveDaysVisible, isFiveDaysVisible
@@ -59,64 +59,64 @@ const celsiusMin = Math.round(main.temp_min - 273.15);
 const celsiusMax = Math.round(main.temp_max - 273.15);
 const celsiusLike = Math.round(main.feels_like - 273.15);
   return (
-    <>
-    <li id={id} className={s.card}>
-      <div className={s.cardHeader}>
-        <p className={s.text}>{name}</p>
-        <p className={s.text}>{country}</p>
+    <div className={s.section}>
+      <li id={id} className={s.card}>
+        <div className={s.cardHeader}>
+          <p className={s.text}>{name}</p>
+          <p className={s.text}>{country}</p>
+        </div>
+        <div className={s.forecastButton}>
+          <button className={s.forecastButtonHourly}>Hourly forecast</button>
+          {/* <button className={s.forecastButtonWeekly} onClick={(e) => {e.preventDefault()
+          setIsFiveDaysVisible(!isFiveDaysVisible)}}>Weekly forecast</button> */}
+        <button className={s.forecastButtonWeekly} onClick={() => weatherData(name)}>Weekly forecast</button>
+        </div>
+        <div className={s.now}>
+          <p className={s.date}>{new Date().toLocaleDateString()}</p>
+          <p className={s.day}>{new Date().toLocaleDateString('en-US', { weekday: 'long' })}</p>
+        </div>
+        <div className={s.cardBody}>
+          {/* <div>{statusIcon(item.weather[0].main.toLowerCase())}</div> */}
+          <p className={s.temperature}>{main ? `${celsius} °C` : 'N/A'}</p>
+        </div>
+        <div className={s.cardActions}>
+          <button className={s.reload} onClick={() => (console.log('name', name),fetchData())}><IoReload/></button>
+          <button className={s.like} onClick={like}>
+            {likedState ? <FcLike /> : <CiHeart />}
+          </button>
+          <button className={s.seeMore} onClick={toggleDetails}>See more</button>
+          <button className={s.del} onClick={() => (delCard(name))}><RiDeleteBin5Line /></button>
+        </div>
+      </li>
+      <div>
+        {weatherDetails && (
+          <ul className={s.details}>
+            <li>Feels like <br/>
+            {main ? `${celsiusLike} °C` : 'N/A'}<br/>
+            <img src={temp} alt="" />
+            </li>
+            <li className={s.min_max}><p>Min °C {main ? `${celsiusMin} °C ` : 'N/A'}</p><br/>
+            <p>Max °C {main ? `${celsiusMax} °C ` : 'N/A'}</p></li>
+            <li>Humidity <br/>
+            {main.humidity}%<br/>
+            <img src={rain} alt="" />
+            </li>
+            <li>Pressure <br/>
+            {main.pressure} Pa<br/>
+            <img src={bar} alt="" />
+            </li>
+            <li>Wind speed <br/>
+            {speed} m/s<br/>
+            <img src={speeds} alt="" />
+            </li>
+            <li>Visibility <br/>
+            {visibility}<br/>
+            <img src={eye} alt="" />
+            </li>
+          </ul>
+        )}
       </div>
-      <div className={s.forecastButton}>
-        <button className={s.forecastButtonHourly}>Hourly forecast</button>
-        <button className={s.forecastButtonWeekly}>Weekly forecast</button>
-      </div>
-      <div className={s.now}>
-        <p className={s.date}>{new Date().toLocaleDateString()}</p>
-        <p className={s.day}>{new Date().toLocaleDateString('en-US', { weekday: 'long' })}</p>
-      </div>
-      <div className={s.cardBody}>
-      {/* <img src="" alt="Weather icon" className={s.weatherIcon} /> */}
-        <WiDaySunny className={s.img}/>
-        <p className={s.temperature}>{main ? `${celsius} °C` : 'N/A'}</p>
-      </div>
-      <div className={s.cardActions}>
-        <button className={s.reload} onClick={() => (console.log('name', name),fetchData())}><IoReload/></button>
-        <button className={s.like} onClick={like}>
-          {likedState ? <FcLike /> : <CiHeart />}
-        </button>
-        <button className={s.seeMore} onClick={toggleDetails}>See more</button>
-        <button className={s.del} onClick={() => (delCard(name))}><RiDeleteBin5Line /></button>
-      </div>
-    </li>
-    <div>
-      {weatherDetails && (
-        <ul className={s.details}>
-          <li>Feels like <br/>
-          {main ? `${celsiusLike} °C` : 'N/A'}<br/>
-          <img src={temp} alt="" />
-          </li>
-          <li>Min °C {main ? `${celsiusMin} °C ` : 'N/A'}<br/>
-          Max °C {main ? `${celsiusMax} °C ` : 'N/A'}</li>
-          <li>Humidity <br/>
-          {main.humidity}%<br/>
-          <img src={rain} alt="" />
-          </li>
-          <li>Pressure <br/>
-          {main.pressure} Pa<br/>
-          <img src={bar} alt="" />
-          </li>
-          <li>Wind speed <br/>
-          {speed} m/s<br/>
-          <img src={speeds} alt="" />
-          </li>
-          <li>Visibility <br/>
-          {visibility}<br/>
-          <img src={eye} alt="" />
-          </li>
-        </ul>
-      )}
     </div>
-    </>
   );
 };
-
 export default CardsItem;

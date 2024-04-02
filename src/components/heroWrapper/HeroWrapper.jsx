@@ -1,7 +1,7 @@
 import { contextInput } from 'components/App';
 import React, { useContext, useState } from 'react';
 import s from "./HeroWrapper.module.css";
-import Container from 'components/Container/Container';
+// import Container from 'components/Container/Container';
 import search from "img/search.svg"
 
 const HeroWrapper = () => {
@@ -23,7 +23,7 @@ const HeroWrapper = () => {
     return (
         <>
             <section className={s.heroWrapper}>
-               <Container>
+               {/* <Container> */}
                     <div className={s.h1}><h1>Weather dashboard</h1></div>
                     <div className={s.plus}>
                            <div className={s.first}> <p>Create your personal list of favorite cities and always be aware of the weather.</p></div>
@@ -33,7 +33,7 @@ const HeroWrapper = () => {
                         <input type="text" className={s.input} onChange={input} placeholder='Search location...'/>
                         <button type='submit' className={s.button}><img className={s.svg} src={search} alt="" /></button>
                     </form>
-               </Container>
+               {/* </Container> */}
             </section>
         </>
     );
